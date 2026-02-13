@@ -1,75 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Shop - Roadmaster</title>
+    <meta charset="UTF-8">
+    <title>RoadMaster Shop</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-    <h1>🚴 Roadmaster Cycle Shop</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="cart.html">Cart 🛒</a>
-    </nav>
-</header>
+    <h1 class="title">RoadMaster Premium Collection</h1>
 
-<section class="products">
-    <h2>Our Cycles & Parts</h2>
-
-    <div class="product-grid">
-
-        <div class="product-card">
-            <img src="images/product1.jpeg" alt="Mountain Bike">
-            <h3>Mountain Bike</h3>
-            <p>₹15,000</p>
-            <button onclick="addToCart('Mountain Bike',15000)">Add to Cart</button>
-        </div>
-
-        <div class="product-card">
-            <img src="images/product2.jpeg" alt="Road Bike">
-            <h3>Road Bike</h3>
-            <p>₹18,000</p>
-            <button onclick="addToCart('Road Bike',18000)">Add to Cart</button>
-        </div>
-
-        <div class="product-card">
-            <img src="images/product3.jpeg" alt="Kids Cycle">
-            <h3>Kids Cycle</h3>
-            <p>₹8,000</p>
-            <button onclick="addToCart('Kids Cycle',8000)">Add to Cart</button>
-        </div>
-
-        <div class="product-card">
-            <img src="images/product4.jpeg" alt="Helmet">
-            <h3>Helmet</h3>
-            <p>₹1,200</p>
-            <button onclick="addToCart('Helmet',1200)">Add to Cart</button>
-        </div>
-
-        <div class="product-card">
-            <img src="images/product5.jpeg" alt="Cycle Lock">
-            <h3>Cycle Lock</h3>
-            <p>₹500</p>
-            <button onclick="addToCart('Cycle Lock',500)">Add to Cart</button>
-        </div>
-
-        <div class="product-card">
-            <img src="images/product6.jpeg" alt="Water Bottle">
-            <h3>Water Bottle</h3>
-            <p>₹300</p>
-            <button onclick="addToCart('Water Bottle',300)">Add to Cart</button>
-        </div>
-
+    <div class="products" id="product-list">
+        <!-- Products will load from script.js -->
     </div>
-</section>
 
-<footer>
-    <p>📍 Malviya Nagar, Jaipur</p>
-    <p>📞 +91 98765 43210</p>
-</footer>
-
-<script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
