@@ -1,75 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Shop - Roadmaster</title>
+    <title>Shop - Cycle Tech Store</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-    <h1>🚴 Roadmaster Cycle Shop</h1>
-    <p>Malviya Nagar, Jaipur</p>
-<nav>
-  <a href="index.html">Home</a>
-  <a href="shop.html">Shop</a>
-  <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
-</nav>
-
+    <h1>Cycle Tech Store</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="cart.html">Cart</a>
+    </nav>
 </header>
 
 <section class="products">
 
     <div class="product">
-        <img src="images/cycle.jpeg">
-        <h3>Carbon Road Bike</h3>
-        <p>₹1200</p>
-        <button onclick="addToCart('Carbon Road Bike', 1200)">Add to Cart</button>
-    </div>
-
-    <div class="product">
-        <img src="images/MageneT200SmartTrainer.jpeg">
+        <img src="MageneT200SmartTrainer.jpeg" alt="Magene T200 Smart Trainer">
         <h3>Magene T200 Smart Trainer</h3>
-        <p>₹650</p>
-        <button onclick="addToCart('Magene T200 Smart Trainer', 650)">Add to Cart</button>
+        <p>₹45,000</p>
+        <button onclick="addToCart('Magene T200 Smart Trainer', 45000)">
+            Add to Cart
+        </button>
     </div>
 
     <div class="product">
-        <img src="images/SmartBikeTrainer.jpeg">
+        <img src="SmartBikeTrainer.jpeg" alt="Smart Bike Trainer">
         <h3>Smart Bike Trainer</h3>
-        <p>₹500</p>
-        <button onclick="addToCart('Smart Bike Trainer', 500)">Add to Cart</button>
+        <p>₹38,000</p>
+        <button onclick="addToCart('Smart Bike Trainer', 38000)">
+            Add to Cart
+        </button>
     </div>
 
     <div class="product">
-        <img src="images/Smartbrakerearlight.jpeg">
+        <img src="Smartbrakerearlight.jpeg" alt="Smart Brake Rear Light">
         <h3>Smart Brake Rear Light</h3>
-        <p>₹80</p>
-        <button onclick="addToCart('Smart Brake Rear Light', 80)">Add to Cart</button>
+        <p>₹2,500</p>
+        <button onclick="addToCart('Smart Brake Rear Light', 2500)">
+            Add to Cart
+        </button>
     </div>
 
     <div class="product">
-        <img src="images/rearlight.jpeg">
+        <img src="cycle.jpeg" alt="Performance Bicycle">
+        <h3>Performance Bicycle</h3>
+        <p>₹55,000</p>
+        <button onclick="addToCart('Performance Bicycle', 55000)">
+            Add to Cart
+        </button>
+    </div>
+
+    <div class="product">
+        <img src="rearlight.jpeg" alt="LED Rear Light">
         <h3>LED Rear Light</h3>
-        <p>₹40</p>
-        <button onclick="addToCart('LED Rear Light', 40)">Add to Cart</button>
+        <p>₹1,200</p>
+        <button onclick="addToCart('LED Rear Light', 1200)">
+            Add to Cart
+        </button>
     </div>
 
     <div class="product">
-        <img src="images/smartradartaillight.jpeg">
+        <img src="smartradartailight.jpeg" alt="Smart Radar Tail Light">
         <h3>Smart Radar Tail Light</h3>
-        <p>₹150</p>
-        <button onclick="addToCart('Smart Radar Tail Light', 150)">Add to Cart</button>
+        <p>₹4,500</p>
+        <button onclick="addToCart('Smart Radar Tail Light', 4500)">
+            Add to Cart
+        </button>
     </div>
 
 </section>
 
 <footer>
-    © 2026 Roadmaster Cycle Shop
+    <p>© 2026 Cycle Tech Store</p>
 </footer>
 
 <script src="script.js"></script>
 
 </body>
 </html>
-
