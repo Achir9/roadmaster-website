@@ -60,9 +60,10 @@ function orderOnWhatsApp() {
     message += "\nTotal Amount: ₹" + total;
     message += "\n\nPayment Screenshot Attached Separately.";
 
-    let phone = "91XXXXXXXXXX"; // PUT YOUR NUMBER HERE
+    let phone = "919462125472"; // PUT YOUR NUMBER HERE
 
     let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
 
     window.open(url, "_blank");
 }
+
