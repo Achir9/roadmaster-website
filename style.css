@@ -18,9 +18,16 @@ nav a {
 }
 
 .hero {
-    padding: 50px;
-    background: red;
+    height: 90vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("images/Homepage.jpeg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
+    text-align: center;
 }
 
 .btn {
@@ -42,3 +49,4 @@ nav a {
     padding: 20px;
     border-radius: 10px;
 }
+
