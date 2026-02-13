@@ -1,5 +1,10 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+function updateCartStorage() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+}
+
 function addToCart(name, price) {
   let existing = cart.find(item => item.name === name);
 
@@ -9,36 +14,35 @@ function addToCart(name, price) {
     cart.push({ name, price, quantity: 1 });
   }
 
-  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartStorage();
   alert("Added to cart");
+}
+
+function increaseQty(index) {
+  cart[index].quantity += 1;
+  updateCartStorage();
+  loadCart();
+}
+
+function decreaseQty(index) {
+  if (cart[index].quantity > 1) {
+    cart[index].quantity -= 1;
+  } else {
+    cart.splice(index, 1);
+  }
+  updateCartStorage();
+  loadCart();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  updateCartStorage();
+  loadCart();
 }
 
 function loadCart() {
   let cartItemsDiv = document.getElementById("cart-items");
   if (!cartItemsDiv) return;
-
-  let total = 0;
-  cartItemsDiv.innerHTML = "";
-
-  cart.forEach((item, index) => {
-
-    let quantity = item.quantity || 1;  // ✅ FIX
-
-    total += item.price * quantity;
-
-    cartItemsDiv.innerHTML += `
-      <div class="cart-item">
-        <h4>${item.name}</h4>
-        <span>₹${item.price}</span>
-        <span>Qty: ${quantity}</span>
-        <button onclick="removeItem(${index})">Remove</button>
-      </div>
-    `;
-  });
-
-  document.getElementById("total").innerText = total;
-}
-
 
   let total = 0;
   cartItemsDiv.innerHTML = "";
@@ -50,8 +54,12 @@ function loadCart() {
       <div class="cart-item">
         <h4>${item.name}</h4>
         <span>₹${item.price}</span>
-        <span>Qty: ${item.quantity}</span>
-        <button onclick="removeItem(${index})">Remove</button>
+        <div class="qty-controls">
+          <button onclick="decreaseQty(${index})">−</button>
+          <span>${item.quantity}</span>
+          <button onclick="increaseQty(${index})">+</button>
+        </div>
+        <button class="remove-btn" onclick="removeItem(${index})">🗑</button>
       </div>
     `;
   });
@@ -59,10 +67,14 @@ function loadCart() {
   document.getElementById("total").innerText = total;
 }
 
-function removeItem(index) {
-  cart.splice(index, 1);
-  localStorage.setItem("cart", JSON.stringify(cart));
-  loadCart();
+function updateCartCount() {
+  let countElement = document.getElementById("cart-count");
+  if (!countElement) return;
+
+  let totalQty = 0;
+  cart.forEach(item => totalQty += item.quantity);
+
+  countElement.innerText = totalQty;
 }
 
 function checkout() {
@@ -83,8 +95,8 @@ function checkout() {
 
   message += `%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}`;
 
-  window.open(`https://wa.me/919462125472?text=${message}`);
+  window.open(`https://wa.me/YOURNUMBER?text=${message}`);
 }
 
+updateCartCount();
 loadCart();
-
