@@ -1,5 +1,10 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+// SAVE CART
+function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
 // ADD TO CART
 function addToCart(name, price) {
 
@@ -15,11 +20,11 @@ function addToCart(name, price) {
         });
     }
 
-    localStorage.setItem("cart", JSON.stringify(cart));
+    saveCart();
     alert("Item added to cart");
 }
 
-// LOAD CART ITEMS
+// LOAD CART
 function loadCart() {
 
     let cartContainer = document.getElementById("cart-items");
@@ -36,20 +41,46 @@ function loadCart() {
             <div class="cart-item">
                 <h4>${item.name}</h4>
                 <p>Price: ₹${item.price}</p>
-                <p>Quantity: ${item.quantity}</p>
-                <button onclick="removeItem(${index})">Remove</button>
+
+                <div class="qty-controls">
+                    <button onclick="decreaseQty(${index})">−</button>
+                    <span>${item.quantity}</span>
+                    <button onclick="increaseQty(${index})">+</button>
+                </div>
+
+                <button class="remove-btn" onclick="removeItem(${index})">
+                    Remove
+                </button>
+                <hr>
             </div>
-            <hr>
         `;
     });
 
     document.getElementById("total").innerText = total;
 }
 
-// REMOVE ITEM
+// INCREASE
+function increaseQty(index) {
+    cart[index].quantity += 1;
+    saveCart();
+    loadCart();
+}
+
+// DECREASE
+function decreaseQty(index) {
+    if (cart[index].quantity > 1) {
+        cart[index].quantity -= 1;
+    } else {
+        cart.splice(index, 1);
+    }
+    saveCart();
+    loadCart();
+}
+
+// REMOVE
 function removeItem(index) {
     cart.splice(index, 1);
-    localStorage.setItem("cart", JSON.stringify(cart));
+    saveCart();
     loadCart();
 }
 
@@ -70,7 +101,8 @@ function checkout() {
     let encodedMessage = encodeURIComponent(message);
 
     window.location.href =
-        `https://wa.me/919462125472?text=${encodedMessage}`;
+        `https://wa.me/919876543210?text=${encodedMessage}`;
 }
 
+// RUN ON PAGE LOAD
 loadCart();
