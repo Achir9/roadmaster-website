@@ -1,36 +1,59 @@
-body {
+/* ===== RESET ===== */
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #111;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #000000, #111111);
     color: white;
 }
 
+/* ===== HEADER ===== */
 header {
+    background: #000;
     text-align: center;
-    padding: 20px;
-    background: black;
+    padding: 25px 0;
+    border-bottom: 1px solid #222;
 }
 
 header h1 {
+    font-size: 40px;
     color: gold;
+    letter-spacing: 2px;
+}
+
+header p {
+    color: #ccc;
+    margin-top: 5px;
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+    margin-top: 15px;
 }
 
 nav a {
-    margin: 0 15px;
     text-decoration: none;
     color: white;
-    font-weight: bold;
+    margin: 0 20px;
+    font-size: 18px;
+    transition: 0.3s;
 }
 
 nav a:hover {
     color: gold;
 }
 
+/* ===== HERO SECTION ===== */
 .hero {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 60px;
+    padding: 80px 10%;
 }
 
 .hero-text {
@@ -38,23 +61,119 @@ nav a:hover {
 }
 
 .hero-text h2 {
-    font-size: 36px;
+    font-size: 42px;
+    margin-bottom: 20px;
 }
 
 .hero-text p {
-    margin: 20px 0;
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 30px;
 }
 
+/* ===== BUTTON ===== */
 .btn {
     background: gold;
     color: black;
-    padding: 10px 20px;
+    padding: 12px 30px;
     text-decoration: none;
     font-weight: bold;
     border-radius: 5px;
+    transition: 0.3s;
 }
 
+.btn:hover {
+    background: #ffd700;
+    transform: scale(1.05);
+}
+
+/* ===== HERO IMAGE ===== */
 .hero-image img {
     width: 500px;
-    border-radius: 10px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(255, 215, 0, 0.2);
+    transition: 0.3s;
+}
+
+.hero-image img:hover {
+    transform: scale(1.05);
+}
+
+/* ===== PRODUCTS SECTION ===== */
+.products {
+    padding: 60px 10%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+}
+
+/* ===== PRODUCT CARD ===== */
+.product {
+    background: #111;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
+
+.product:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(255, 215, 0, 0.2);
+}
+
+.product img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.product h3 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.product p {
+    font-size: 18px;
+    font-weight: bold;
+    color: gold;
+    margin-bottom: 15px;
+}
+
+.product button {
+    background: gold;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.product button:hover {
+    background: #ffd700;
+    transform: scale(1.05);
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: black;
+    color: #aaa;
+    margin-top: 50px;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 900px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-image img {
+        width: 90%;
+        margin-top: 30px;
+    }
 }
