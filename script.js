@@ -97,7 +97,7 @@ function checkout() {
 
   let encodedMessage = encodeURIComponent(message);
 
-  window.open(`https://wa.me/919876543210?text=${encodedMessage}`, "_blank");
+  window.open(`https://wa.me/919462125472?text=${encodedMessage}`, "_blank");
 }
 
   let message = "Order Details:%0A";
@@ -113,4 +113,5 @@ function checkout() {
 
 updateCartCount();
 loadCart();
+
 
