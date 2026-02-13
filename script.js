@@ -1,69 +1,48 @@
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-function addToCart(name, price) {
-    cart.push({ name, price });
-    localStorage.setItem("cart", JSON.stringify(cart));
-    alert(name + " added to cart!");
-}
-
-function displayCart() {
-    const cartItems = document.getElementById("cart-items");
-    const totalPrice = document.getElementById("total");
-    cartItems.innerHTML = "";
-
-    let total = 0;
-
-    cart.forEach((item, index) => {
-        total += item.price;
-
-        cartItems.innerHTML += `
-            <div class="cart-item">
-                <p>${item.name} - ₹${item.price}</p>
-                <button onclick="removeItem(${index})">Remove</button>
-            </div>
-        `;
-    });
-
-    totalPrice.innerText = "Total: ₹" + total;
-}
-
-function removeItem(index) {
-    cart.splice(index, 1);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    displayCart();
-}
-
-function orderOnWhatsApp() {
-
-    const name = document.getElementById("customerName").value;
-    const phoneInput = document.getElementById("customerPhone").value;
-    const address = document.getElementById("customerAddress").value;
-
-    if (!name || !phoneInput || !address) {
-        alert("Please fill all customer details!");
-        return;
+const products = [
+    {
+        name: "Carbon Road Bike",
+        price: 1200,
+        image: "images/cycle.jpeg"
+    },
+    {
+        name: "Magene T200 Smart Trainer",
+        price: 650,
+        image: "images/MageneT200SmartTrainer.jpeg"
+    },
+    {
+        name: "Smart Bike Trainer",
+        price: 500,
+        image: "images/SmartBikeTrainer.jpeg"
+    },
+    {
+        name: "Smart Brake Rear Light",
+        price: 80,
+        image: "images/Smartbrakerearlight.jpeg"
+    },
+    {
+        name: "LED Rear Light",
+        price: 40,
+        image: "images/rearlight.jpeg"
+    },
+    {
+        name: "Smart Radar Tail Light",
+        price: 150,
+        image: "images/smartradartaillight.jpeg"
     }
+];
 
-    let message = "🚴 Roadmaster Order\n\n";
-    message += "Customer Name: " + name + "\n";
-    message += "Customer Phone: " + phoneInput + "\n";
-    message += "Address: " + address + "\n\n";
-    message += "Ordered Items:\n";
+const productList = document.getElementById("product-list");
 
-    let total = 0;
+products.forEach(product => {
+    const productCard = document.createElement("div");
+    productCard.classList.add("product");
 
-    cart.forEach(item => {
-        message += "- " + item.name + " ₹" + item.price + "\n";
-        total += item.price;
-    });
+    productCard.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p>$${product.price}</p>
+        <button>Add to Cart</button>
+    `;
 
-    message += "\nTotal Amount: ₹" + total;
-    message += "\n\nPayment Screenshot Attached Separately.";
-
-    let phone = "919462125472"; // PUT YOUR NUMBER HERE
-
-    let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
-
-    window.open(url, "_blank");
-}
-
+    productList.appendChild(productCard);
+});
