@@ -1,67 +1,66 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 function addToCart(name, price) {
-    cart.push({ name, price });
-    localStorage.setItem("cart", JSON.stringify(cart));
-    alert(name + " added to cart!");
+  let existing = cart.find(item => item.name === name);
+
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ name, price, quantity: 1 });
+  }
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("Added to cart");
 }
 
-function displayCart() {
-    const cartItems = document.getElementById("cart-items");
-    const totalDisplay = document.getElementById("total");
+function loadCart() {
+  let cartItemsDiv = document.getElementById("cart-items");
+  if (!cartItemsDiv) return;
 
-    if (!cartItems) return;
+  let total = 0;
+  cartItemsDiv.innerHTML = "";
 
-    cartItems.innerHTML = "";
-    let total = 0;
+  cart.forEach((item, index) => {
+    total += item.price * item.quantity;
 
-    cart.forEach((item, index) => {
-        total += item.price;
+    cartItemsDiv.innerHTML += `
+      <div class="cart-item">
+        <h4>${item.name}</h4>
+        <span>₹${item.price}</span>
+        <span>Qty: ${item.quantity}</span>
+        <button onclick="removeItem(${index})">Remove</button>
+      </div>
+    `;
+  });
 
-        cartItems.innerHTML += `
-            <div class="cart-item">
-                <p>${item.name} - ₹${item.price}</p>
-                <button onclick="removeItem(${index})">Remove</button>
-            </div>
-        `;
-    });
-
-    totalDisplay.innerText = "Total: ₹" + total;
+  document.getElementById("total").innerText = total;
 }
 
 function removeItem(index) {
-    cart.splice(index, 1);
-    localStorage.setItem("cart", JSON.stringify(cart));
-    displayCart();
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  loadCart();
 }
 
-function orderOnWhatsApp() {
-    const name = document.getElementById("customerName").value;
-    const phoneInput = document.getElementById("customerPhone").value;
-    const address = document.getElementById("customerAddress").value;
+function checkout() {
+  let name = document.getElementById("name").value;
+  let phone = document.getElementById("phone").value;
+  let address = document.getElementById("address").value;
 
-    if (!name || !phoneInput || !address) {
-        alert("Please fill all details");
-        return;
-    }
+  if (!name || !phone || !address) {
+    alert("Fill all details");
+    return;
+  }
 
-    let message = "🚴 Roadmaster Order\n\n";
-    message += "Name: " + name + "\n";
-    message += "Phone: " + phoneInput + "\n";
-    message += "Address: " + address + "\n\n";
+  let message = "Order Details:%0A";
 
-    let total = 0;
+  cart.forEach(item => {
+    message += `${item.name} x ${item.quantity} - ₹${item.price * item.quantity}%0A`;
+  });
 
-    cart.forEach(item => {
-        message += "- " + item.name + " ₹" + item.price + "\n";
-        total += item.price;
-    });
+  message += `%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}`;
 
-    message += "\nTotal: ₹" + total;
-
-    let phone = "919462125472"; // PUT YOUR NUMBER HERE
-
-    let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
-
-    window.open(url, "_blank");
+  window.open(`https://wa.me/919462125472?text=${message}`);
 }
+
+loadCart();
