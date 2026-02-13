@@ -2,37 +2,72 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Shop - Roadmaster Cycle Shop</title>
+    <title>Shop - Roadmaster</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- HEADER / NAVIGATION -->
-    <header>
-        <h1>🚴 Roadmaster Cycle Shop</h1>
-        <p>Malviya Nagar, Jaipur</p>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="shop.html">Shop</a>
-            <a href="cart.html">Cart 🛒</a>
-        </nav>
-    </header>
+<header>
+    <h1>🚴 Roadmaster Cycle Shop</h1>
+    <p>Malviya Nagar, Jaipur</p>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="cart.html">Cart 🛒</a>
+    </nav>
+</header>
 
-    <!-- SHOP SECTION -->
-    <section>
-        <h2 style="text-align:center; margin-top:40px;">Our Premium Collection</h2>
+<section class="products">
 
-        <div class="products" id="product-list">
-            <!-- Products load from script.js -->
-        </div>
-    </section>
+    <div class="product">
+        <img src="images/cycle.jpeg">
+        <h3>Carbon Road Bike</h3>
+        <p>₹1200</p>
+        <button onclick="addToCart('Carbon Road Bike', 1200)">Add to Cart</button>
+    </div>
 
-    <!-- FOOTER -->
-    <footer>
-        © 2026 Roadmaster Cycle Shop | Premium Cycles & Accessories
-    </footer>
+    <div class="product">
+        <img src="images/MageneT200SmartTrainer.jpeg">
+        <h3>Magene T200 Smart Trainer</h3>
+        <p>₹650</p>
+        <button onclick="addToCart('Magene T200 Smart Trainer', 650)">Add to Cart</button>
+    </div>
 
-    <script src="script.js"></script>
+    <div class="product">
+        <img src="images/SmartBikeTrainer.jpeg">
+        <h3>Smart Bike Trainer</h3>
+        <p>₹500</p>
+        <button onclick="addToCart('Smart Bike Trainer', 500)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="images/Smartbrakerearlight.jpeg">
+        <h3>Smart Brake Rear Light</h3>
+        <p>₹80</p>
+        <button onclick="addToCart('Smart Brake Rear Light', 80)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="images/rearlight.jpeg">
+        <h3>LED Rear Light</h3>
+        <p>₹40</p>
+        <button onclick="addToCart('LED Rear Light', 40)">Add to Cart</button>
+    </div>
+
+    <div class="product">
+        <img src="images/smartradartaillight.jpeg">
+        <h3>Smart Radar Tail Light</h3>
+        <p>₹150</p>
+        <button onclick="addToCart('Smart Radar Tail Light', 150)">Add to Cart</button>
+    </div>
+
+</section>
+
+<footer>
+    © 2026 Roadmaster Cycle Shop
+</footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
