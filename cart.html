@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Your Cart - Cycle Parts Store</title>
+    <meta charset="UTF-8">
+    <title>Cart - Cycle Parts Store</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
     <h1>Cycle Parts Store</h1>
-<nav>
-  <a href="index.html">Home</a>
-  <a href="shop.html">Shop</a>
-  <a href="cart.html">Cart (<span id="cart-count">0</span>)</a>
-</nav>
-
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="cart.html">Cart</a>
+    </nav>
 </header>
 
 <div class="cart-container">
@@ -22,31 +22,19 @@
 
     <div id="cart-items"></div>
 
-    <div class="cart-total">
-        Total: ₹<span id="total">0</span>
-    </div>
+    <h3>Total: ₹<span id="total">0</span></h3>
 
-    <div class="checkout-form">
-        <h3>Customer Details</h3>
-
-        <input type="text" id="name" placeholder="Full Name">
-
-        <input type="text" id="phone" placeholder="Phone Number">
-
-        <textarea id="address" placeholder="Full Address"></textarea>
-
-        <button onclick="checkout()">Proceed to WhatsApp Payment</button>
-    </div>
+    <button onclick="checkout()" class="btn">
+        Order on WhatsApp
+    </button>
 
 </div>
 
 <footer>
-    <p>© 2026 Cycle Parts Store. All Rights Reserved.</p>
+    <p>© 2026 Cycle Parts Store</p>
 </footer>
 
 <script src="script.js"></script>
 
 </body>
 </html>
-
-
