@@ -1,14 +1,11 @@
-// Get cart from local storage
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// Add to cart function
 function addToCart(name, price) {
     cart.push({ name, price });
     localStorage.setItem("cart", JSON.stringify(cart));
     alert(name + " added to cart!");
 }
 
-// Display cart items
 function displayCart() {
     const cartItems = document.getElementById("cart-items");
     const totalPrice = document.getElementById("total");
@@ -30,28 +27,42 @@ function displayCart() {
     totalPrice.innerText = "Total: ₹" + total;
 }
 
-// Remove item
 function removeItem(index) {
     cart.splice(index, 1);
     localStorage.setItem("cart", JSON.stringify(cart));
     displayCart();
 }
 
-// WhatsApp order
 function orderOnWhatsApp() {
-    let message = "Hello Roadmaster, I want to order:\n";
+
+    const name = document.getElementById("customerName").value;
+    const phoneInput = document.getElementById("customerPhone").value;
+    const address = document.getElementById("customerAddress").value;
+
+    if (!name || !phoneInput || !address) {
+        alert("Please fill all customer details!");
+        return;
+    }
+
+    let message = "🚴 Roadmaster Order\n\n";
+    message += "Customer Name: " + name + "\n";
+    message += "Customer Phone: " + phoneInput + "\n";
+    message += "Address: " + address + "\n\n";
+    message += "Ordered Items:\n";
+
     let total = 0;
 
     cart.forEach(item => {
-        message += item.name + " - ₹" + item.price + "\n";
+        message += "- " + item.name + " ₹" + item.price + "\n";
         total += item.price;
     });
 
-    message += "\nTotal: ₹" + total;
+    message += "\nTotal Amount: ₹" + total;
+    message += "\n\nPayment Screenshot Attached Separately.";
 
-    let phone = "919462125472"; // Replace with your number
+    let phone = "91XXXXXXXXXX"; // PUT YOUR NUMBER HERE
+
     let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
 
     window.open(url, "_blank");
 }
-
