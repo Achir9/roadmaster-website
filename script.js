@@ -64,17 +64,15 @@ function loadCart() {
     `;
   });
 
-  document.getElementById("total").innerText = total;
+  document.getElementById("total").textContent = total;
 }
 
 function updateCartCount() {
   let countElement = document.getElementById("cart-count");
   if (!countElement) return;
 
-  let totalQty = 0;
-  cart.forEach(item => totalQty += item.quantity);
-
-  countElement.innerText = totalQty;
+  let totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
+  countElement.textContent = totalQty;
 }
 
 function checkout() {
@@ -96,22 +94,9 @@ function checkout() {
   message += `\nName: ${name}\nPhone: ${phone}\nAddress: ${address}`;
 
   let encodedMessage = encodeURIComponent(message);
-
   window.open(`https://wa.me/919462125472?text=${encodedMessage}`, "_blank");
 }
 
-  let message = "Order Details:%0A";
-
-  cart.forEach(item => {
-    message += `${item.name} x ${item.quantity} - ₹${item.price * item.quantity}%0A`;
-  });
-
-  message += `%0AName: ${name}%0APhone: ${phone}%0AAddress: ${address}`;
-
-  window.open(`https://wa.me/YOURNUMBER?text=${message}`);
-}
-
+// Initialize cart display
 updateCartCount();
 loadCart();
-
-
