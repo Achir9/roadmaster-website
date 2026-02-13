@@ -215,3 +215,39 @@ footer {
   color: #aaa;
   margin-top: 50px;
 }
+.qty-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.qty-controls button {
+  background: gold;
+  border: none;
+  padding: 4px 8px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.qty-controls button:hover {
+  background: #ffd700;
+  transform: scale(1.1);
+}
+
+.remove-btn {
+  background: red;
+  color: white;
+  border: none;
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.remove-btn:hover {
+  background: darkred;
+}
+
+
