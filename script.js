@@ -1,19 +1,22 @@
-// Load cart from localStorage
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+// LOAD CART SAFELY
+let cart = JSON.parse(localStorage.getItem("cart"));
 
-// Save cart
+if (!Array.isArray(cart)) {
+    cart = [];
+}
+
+// SAVE CART
 function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
-// Add to cart
+// ADD TO CART
 function addToCart(name, price) {
 
-    // Check if item already exists
-    let existingItem = cart.find(item => item.name === name);
+    let existing = cart.find(item => item.name === name);
 
-    if (existingItem) {
-        existingItem.quantity += 1;
+    if (existing) {
+        existing.quantity += 1;
     } else {
         cart.push({
             name: name,
@@ -26,23 +29,25 @@ function addToCart(name, price) {
     alert("Item added to cart");
 }
 
-// Load cart items
+// LOAD CART ITEMS
 function loadCart() {
 
-    let container = document.getElementById("cart-items");
-    if (!container) return;
+    let cartContainer = document.getElementById("cart-items");
+    if (!cartContainer) return;
 
-    container.innerHTML = "";
+    cartContainer.innerHTML = "";
     let total = 0;
 
     cart.forEach((item, index) => {
 
-        // Safety check (prevents null/undefined issues)
-        if (!item.quantity) item.quantity = 1;
+        // Fix undefined quantity issue
+        if (!item.quantity || item.quantity < 1) {
+            item.quantity = 1;
+        }
 
         total += item.price * item.quantity;
 
-        container.innerHTML += `
+        cartContainer.innerHTML += `
             <div class="cart-item">
                 <h4>${item.name}</h4>
                 <p>Price: ₹${item.price}</p>
@@ -64,14 +69,14 @@ function loadCart() {
     document.getElementById("total").innerText = total;
 }
 
-// Increase quantity
+// INCREASE
 function increaseQty(index) {
     cart[index].quantity += 1;
     saveCart();
     loadCart();
 }
 
-// Decrease quantity
+// DECREASE
 function decreaseQty(index) {
     if (cart[index].quantity > 1) {
         cart[index].quantity -= 1;
@@ -82,21 +87,21 @@ function decreaseQty(index) {
     loadCart();
 }
 
-// Remove item
+// REMOVE ITEM
 function removeItem(index) {
     cart.splice(index, 1);
     saveCart();
     loadCart();
 }
 
-// Clear cart manually (optional but useful)
+// CLEAR CART (Optional Button Support)
 function clearCart() {
     cart = [];
     localStorage.removeItem("cart");
     loadCart();
 }
 
-// WhatsApp checkout
+// WHATSAPP CHECKOUT
 function checkout() {
 
     if (cart.length === 0) {
@@ -104,17 +109,17 @@ function checkout() {
         return;
     }
 
-    let message = "Order Details:%0A";
+    let message = "Order Details:\n";
 
     cart.forEach(item => {
-        message += `${item.name} x ${item.quantity} - ₹${item.price * item.quantity}%0A`;
+        message += `${item.name} x ${item.quantity} - ₹${item.price * item.quantity}\n`;
     });
 
-    // Replace with YOUR WhatsApp number (no +, no spaces)
-    let phoneNumber = "919876543210";
+    let encodedMessage = encodeURIComponent(message);
 
-    window.location.href = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.location.href =
+        `https://wa.me/919876543210?text=${encodedMessage}`;
 }
 
-// Run when page loads
-document.addEventListener("DOMContentLoaded", loadCart);
+// RUN WHEN PAGE LOADS
+loadCart();
