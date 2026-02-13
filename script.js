@@ -118,8 +118,9 @@ function checkout() {
     let encodedMessage = encodeURIComponent(message);
 
     window.location.href =
-        `https://wa.me/919876543210?text=${encodedMessage}`;
+        `https://wa.me/919462125472?text=${encodedMessage}`;
 }
 
 // RUN WHEN PAGE LOADS
 loadCart();
+
