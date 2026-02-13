@@ -87,6 +87,19 @@ function checkout() {
     return;
   }
 
+  let message = "Order Details:\n";
+
+  cart.forEach(item => {
+    message += `${item.name} x ${item.quantity} - ₹${item.price * item.quantity}\n`;
+  });
+
+  message += `\nName: ${name}\nPhone: ${phone}\nAddress: ${address}`;
+
+  let encodedMessage = encodeURIComponent(message);
+
+  window.open(`https://wa.me/919876543210?text=${encodedMessage}`, "_blank");
+}
+
   let message = "Order Details:%0A";
 
   cart.forEach(item => {
@@ -100,3 +113,4 @@ function checkout() {
 
 updateCartCount();
 loadCart();
+
