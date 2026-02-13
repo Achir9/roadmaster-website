@@ -7,18 +7,35 @@
 <body onload="displayCart()">
 
 <header>
-    <h1>🛒 Your Cart</h1>
+    <h1>🚴 Roadmaster Cycle Shop</h1>
+    <p>Malviya Nagar, Jaipur</p>
     <nav>
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
+        <a href="cart.html">Cart 🛒</a>
     </nav>
 </header>
 
 <section class="cart-section">
-
     <div id="cart-items"></div>
     <h2 id="total"></h2>
 
     <hr>
 
-    <h3>Cus
+    <input type="text" id="customerName" placeholder="Your Name">
+    <input type="text" id="customerPhone" placeholder="Your Phone">
+    <textarea id="customerAddress" placeholder="Your Address"></textarea>
+
+    <button onclick="orderOnWhatsApp()" class="whatsapp-btn">
+        Confirm Order on WhatsApp
+    </button>
+</section>
+
+<footer>
+    © 2026 Roadmaster Cycle Shop
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
