@@ -49,8 +49,9 @@ function orderOnWhatsApp() {
 
     message += "\nTotal: ₹" + total;
 
-    let phone = "919876543210"; // Replace with your number
+    let phone = "919462125472"; // Replace with your number
     let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
 
     window.open(url, "_blank");
 }
+
